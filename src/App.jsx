@@ -25,10 +25,22 @@ function App() {
 const ToggleColor = () => {
 	const [color, setColor] = useState('light')
 
+	const toggleColor = () => {
+		setColor(color === 'light' ? 'dark' : 'light');
+		// if( color === 'light' ) {
+		// 	setColor('dark')
+		// } else {
+		// 	setColor('light')
+		// }
+	};
+	let buttonText = color === 'light' ? 'Byt till mörk' : 'Byt till ljus'
+
 	return (
 		<section className={color}>
 		Färgad komponent
 		<button onClick={() => setColor('dark')}> Byt till mörk färg </button>
+		<button onClick={() => setColor('light')}> Byt till ljus färg </button>
+		<button onClick={toggleColor}> {buttonText} </button>
 		</section>
 	)
 }
