@@ -1,6 +1,32 @@
 import { useState } from 'react'
 import './App.css'
 
+
+const FooBar = () => {
+	// State - måste vara överst
+	const [x, setX] = useState(1)
+
+	// Man kan förbereda funktioner att använda i JSX
+	const decrease = () => setX(x - 1)
+	
+	let text = x
+	if( x % 3 === 0 && x % 5 === 0 ) {
+		text = 'foobar'
+	} else if( x % 3 === 0 ) {
+		text = 'foo'
+	} else if( x % 5 === 0 ) {
+		text = 'bar'
+	}
+
+	return (
+		<section>
+			<button onClick={() => setX(x + 1)}> +1 </button>
+			<button onClick={decrease}> -1 </button>
+			<p> {text} </p>
+		</section>
+	)
+}
+
 function App() {
 	// const tempList = useState(1)
 	// const value = tempList[0], setValue = tempList[1]
@@ -10,6 +36,8 @@ function App() {
 			Hello world!
 
 			<ToggleColor />
+
+			<FooBar />
 
 			<section>
 				<h3> React </h3>
@@ -58,7 +86,7 @@ const Child = () => (
 	</>
 )
 
-let exempel = Parent()
-console.log('Parent component:', exempel)
+// let exempel = Parent()
+// console.log('Parent component:', exempel)
 
 export default App
